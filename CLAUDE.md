@@ -2,6 +2,9 @@
 
 This file provides guidance to Claude Code when working on this extension.
 
+**Communication**: 优先使用中文交流。
+**Git**: git commit 时不要添加 `Co-Authored-By: Claude <noreply@anthropic.com>` 署名。
+
 ## Project Overview
 
 This is a **VSCode TextMate grammar extension** that provides syntax highlighting for MU Online server custom configuration files (`.dat.txt`). It's a companion to the main [mu-server](e:\Main5.2\mu-server) project.
@@ -17,23 +20,25 @@ The extension targets files with the `.dat.txt` extension. These files have a si
 
 ## File Structure
 
-| File | Purpose |
-|------|---------|
-| `package.json` | Extension manifest. Registers:
-  - Language `mu-custom-config` (aliases: `MU Custom Config`, `MU Custom`)
-  - File match pattern: `**/*.dat.txt`
-  - Grammar at `syntaxes/mu-custom-config.tmLanguage.json`
-  - Language config at `language-configuration.json` |
-| `language-configuration.json` | Basic VSCode language config: `//` as line comment, bracket pairs `()`, `[]`, `{}` |
-| `syntaxes/mu-custom-config.tmLanguage.json` | **TextMate grammar** — the core of the extension |
-| `.vscode/launch.json` | F5 launch config for extension development host |
-| `README.md` | User-facing docs |
+| File           | Purpose                        |
+| -------------- | ------------------------------ |
+| `package.json` | Extension manifest. Registers: |
+
+- Language `mu-custom-config` (aliases: `MU Custom Config`, `MU Custom`)
+- File match pattern: `**/*.dat.txt`
+- Grammar at `syntaxes/mu-custom-config.tmLanguage.json`
+- Language config at `language-configuration.json` |
+  | `language-configuration.json` | Basic VSCode language config: `//` as line comment, bracket pairs `()`, `[]`, `{}` |
+  | `syntaxes/mu-custom-config.tmLanguage.json` | **TextMate grammar** — the core of the extension |
+  | `.vscode/launch.json` | F5 launch config for extension development host |
+  | `README.md` | User-facing docs |
 
 ## Grammar Details (`tmLanguage.json`)
 
 **Scope name**: `source.mu-custom-config`
 
 Example files for visual testing:
+
 - [`example.dat.txt`](example.dat.txt) — comprehensive reference
 - [`example1.dat.txt`](example1.dat.txt) — standard blocks
 - [`example2.dat.txt`](example2.dat.txt) — headerless block (just data rows + `end`)
@@ -71,13 +76,29 @@ Note: Content patterns (comments, strings, numbers) are duplicated inside and ou
 
 ## Relationship to mu-server
 
-| Context | Details |
-|---------|---------|
-| Config files rendered by this extension | `e:\Main5.2\mu-server\Data\Custom\*.txt` (named `*.dat.txt` in the extension convention) |
-| Config encoding | All `.txt` files are **GBK (codepage 936)** — but the grammar extension is encoding-agnostic (VSCode handles display) |
-| Source that reads these configs | `e:\Main5.2\Source_MuServer\GameServer\GameServer\Custom*.cpp` |
-| Config format origin | Chinese MuOnline private server custom features |
+| Context                                 | Details                                                                                                               |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Config files rendered by this extension | `e:\Main5.2\mu-server\Data\Custom\*.txt` (named `*.dat.txt` in the extension convention)                              |
+| Config encoding                         | All `.txt` files are **GBK (codepage 936)** — but the grammar extension is encoding-agnostic (VSCode handles display) |
+| Source that reads these configs         | `e:\Main5.2\Source_MuServer\GameServer\GameServer\Custom*.cpp`                                                        |
+| Config format origin                    | Chinese MuOnline private server custom features                                                                       |
 
 ## Memory
 
 Personal/memory files are stored at `C:\Users\buuug7\.claude\projects\e--Main5-2-mu-server-mu-custom-config-syntax\memory\`.
+
+### Release & Publishing
+
+Release process (run these steps in order):
+
+1. **Changelog** — Update `CHANGELOG.md`: summarize all changes since the last release under a new version header. Follow the existing format (`## X.Y.Z (YYYY-MM-DD)` with emoji-prefixed sections).
+2. **Changelog** prefer use chinese language
+3. **Version bump** — Follow [semantic versioning](https://semver.org/):
+   - `package.json` → update `version` field
+   - `CHANGELOG.md` → ensure the version header matches
+4. **Commit** — `git add -A && git commit -m "chore: bump version to X.Y.Z"` (not include `Co-Authored-By: xxx` in the footer)
+5. **Tag** — `git tag vX.Y.Z`
+6. **Push** — `git push && git push --tags`
+7. **Package VSIX** — `npx vsce package`
+8. **GitHub Release** — release on github `.vsix` file
+9. **Marketplace Publish** — `npm run publish` (runs `vsce publish`, pushes to VS Code Marketplace)
