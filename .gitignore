@@ -1,4 +1,7 @@
 node_modules/
+.vscode-test/
+out/
+dist/
 *.vsix
 *.log
 .vscode/settings.json
