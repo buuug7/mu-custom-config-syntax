@@ -1,0 +1,9 @@
+.vscode/**
+.gitignore
+.vscodeignore
+**/*.dat.txt
+**/tsconfig.json
+**/*.map
+**/*.ts
+node_modules/
+CLAUDE.md
