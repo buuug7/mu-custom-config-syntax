@@ -15,9 +15,7 @@
     "url": "https://github.com/buuug7/mu-custom-config-syntax.git"
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "echo no-compile",
     "package": "npx vsce package",
     "publish": "npx vsce publish"
   },
