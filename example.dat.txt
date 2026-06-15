@@ -1,0 +1,60 @@
+// ============================================================
+//  MU Custom Config — syntax reference example
+//  This file demonstrates all structures the TextMate grammar
+//  highlights. Open it with language "MU Custom Config" to
+//  see the colors in action.
+// ============================================================
+
+// --- Top-level comments (outside any block) ---
+// Any line starting with // is a comment, anywhere in the file.
+// They get the comment.line.double-slash scope.
+
+// --- Top-level numbers (outside any block) ---
+// Standalone numbers outside blocks are still highlighted:
+100
+255
+999999
+
+// ============================================================
+//  1. Basic block — single item entry
+// ============================================================
+0
+// Inside a block, numbers and strings get highlighted too.
+12 33 1 2 5
+7 30 100
+"bless"
+'item name'
+end
+
+// ============================================================
+//  2. Multiple blocks
+// ============================================================
+1
+12 33 1
+7 30 100
+end
+
+2
+12 34 2
+18 90 300
+end
+
+// ============================================================
+//  3. Block with string values
+// ============================================================
+3
+1 "english string"
+2 'chinese 中文'
+3 "mixed eng 中文"
+end
+
+// ============================================================
+//  4. Block with single-row (like headerless format)
+// ============================================================
+4
+10 20 30 40 50
+end
+
+// --- Stray `end` outside a block ---
+// This is still highlighted via the top-level end fallback.
+end

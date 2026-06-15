@@ -16,7 +16,7 @@
         "id": "mu-custom-config",
         "aliases": ["MU Custom Config", "MU Custom"],
         "extensions": [],
-        "filenamePatterns": ["**/Data/Custom/*.txt", "**/Data/Custom/**/*.txt"],
+        "filenamePatterns": ["**/*.dat.txt"],
         "configuration": "language-configuration.json"
       }
     ],

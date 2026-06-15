@@ -3,20 +3,57 @@
   "name": "MU Custom Config",
   "patterns": [
     {
+      "begin": "^\\s*\\d+\\s*$",
+      "beginCaptures": {
+        "0": {
+          "name": "keyword.control.mu-custom-config"
+        }
+      },
+      "end": "^\\s*end\\s*$",
+      "endCaptures": {
+        "0": {
+          "name": "keyword.control.mu-custom-config"
+        }
+      },
+      "name": "meta.block.mu-custom-config",
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.mu-custom-config",
+          "match": "//.*$"
+        },
+        {
+          "name": "string.quoted.double.mu-custom-config",
+          "match": "\"[^\"]*\""
+        },
+        {
+          "name": "string.quoted.single.mu-custom-config",
+          "match": "'[^']*'"
+        },
+        {
+          "name": "constant.numeric.mu-custom-config",
+          "match": "\\b\\d+\\b"
+        }
+      ]
+    },
+    {
       "name": "comment.line.double-slash.mu-custom-config",
       "match": "//.*$"
     },
     {
-      "name": "keyword.control.mu-custom-config",
-      "match": "\\bend\\b"
+      "name": "string.quoted.double.mu-custom-config",
+      "match": "\"[^\"]*\""
     },
     {
-      "name": "meta.section.mu-custom-config",
-      "match": "^\\s*\\d+\\s*$"
+      "name": "string.quoted.single.mu-custom-config",
+      "match": "'[^']*'"
     },
     {
       "name": "constant.numeric.mu-custom-config",
-      "match": "\\b\\d{2},\\d{3}\\b|\\b\\d+\\b"
+      "match": "\\b\\d+\\b"
+    },
+    {
+      "name": "keyword.control.mu-custom-config",
+      "match": "^\\s*end\\s*$"
     }
   ],
   "repository": {}
