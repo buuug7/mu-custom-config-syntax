@@ -2,7 +2,7 @@
   "name": "mu-custom-config-syntax",
   "displayName": "MU Server Custom Config Syntax",
   "description": "Provides syntax highlighting for MU server custom config files in Data/Custom.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "buuug7",
   "license": "MIT",
   "icon": "icon.png",
