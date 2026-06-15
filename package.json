@@ -5,6 +5,10 @@
   "version": "0.0.1",
   "publisher": "buuug7",
   "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1e1e2e",
+    "theme": "dark"
+  },
   "engines": {
     "vscode": "^1.80.0"
   },
