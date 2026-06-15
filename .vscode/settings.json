@@ -1,0 +1,5 @@
+{
+  "files.associations": {
+    "**/Data/Custom/*.txt": "mu-custom-config"
+  }
+}

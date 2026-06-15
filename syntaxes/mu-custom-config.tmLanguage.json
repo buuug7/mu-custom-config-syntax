@@ -1,0 +1,23 @@
+{
+  "scopeName": "source.mu-custom-config",
+  "name": "MU Custom Config",
+  "patterns": [
+    {
+      "name": "comment.line.double-slash.mu-custom-config",
+      "match": "//.*$"
+    },
+    {
+      "name": "keyword.control.mu-custom-config",
+      "match": "\\bend\\b"
+    },
+    {
+      "name": "meta.section.mu-custom-config",
+      "match": "^\\s*\\d+\\s*$"
+    },
+    {
+      "name": "constant.numeric.mu-custom-config",
+      "match": "\\b\\d{2},\\d{3}\\b|\\b\\d+\\b"
+    }
+  ],
+  "repository": {}
+}
