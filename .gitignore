@@ -5,3 +5,4 @@ dist/
 *.vsix
 *.log
 .vscode/settings.json
+examples/
